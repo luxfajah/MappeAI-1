@@ -39,21 +39,20 @@ export default function LandingPage() {
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
                     <Link href={user ? "/dashboard" : "/auth"}>
-                      <Button 
-                        className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 md:py-4 md:text-lg md:px-10"
+                      <div 
+                        className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 md:py-4 md:text-lg md:px-10 cursor-pointer"
                       >
                         Começar Agora
-                      </Button>
+                      </div>
                     </Link>
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3">
                     <Link href="#pricing">
-                      <Button 
-                        variant="outline"
-                        className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-primary border-primary hover:bg-primary/10 md:py-4 md:text-lg md:px-10"
+                      <div 
+                        className="w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-primary border border-primary hover:bg-primary/10 md:py-4 md:text-lg md:px-10 cursor-pointer"
                       >
                         Ver Planos
-                      </Button>
+                      </div>
                     </Link>
                   </div>
                 </div>
@@ -167,12 +166,11 @@ export default function LandingPage() {
                   <span className="text-base font-medium text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
-                  <Button 
-                    variant="outline" 
-                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200"
+                  <div 
+                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200 cursor-pointer"
                   >
                     Começar Grátis
-                  </Button>
+                  </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">
@@ -218,11 +216,11 @@ export default function LandingPage() {
                   <span className="text-base font-medium text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
-                  <Button 
-                    className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center"
+                  <div 
+                    className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center bg-primary hover:bg-primary/90 cursor-pointer"
                   >
                     Experimente por 14 dias
-                  </Button>
+                  </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">

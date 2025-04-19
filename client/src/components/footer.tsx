@@ -39,17 +39,17 @@ export default function Footer() {
 
           <div className="px-5 py-2">
             <Link href="/terms">
-              <a className="text-base text-gray-500 hover:text-gray-900">
+              <div className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                 Termos
-              </a>
+              </div>
             </Link>
           </div>
 
           <div className="px-5 py-2">
             <Link href="/privacy">
-              <a className="text-base text-gray-500 hover:text-gray-900">
+              <div className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                 Privacidade
-              </a>
+              </div>
             </Link>
           </div>
         </nav>
