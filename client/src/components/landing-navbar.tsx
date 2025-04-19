@@ -77,12 +77,12 @@ const LandingNavbar = () => {
           <nav className="hidden md:flex space-x-10">
             {navItems.map((item) => (
               <Link key={item.name} href={item.href}>
-                <a 
+                <div 
                   className={`
                     text-base font-medium 
                     dark:text-gray-300 text-gray-700 
                     hover:text-primary dark:hover:text-primary 
-                    relative pb-1 transition-colors
+                    relative pb-1 transition-colors cursor-pointer
                     ${location === item.href ? 'text-primary dark:text-primary' : ''}
                   `}
                 >
@@ -96,7 +96,7 @@ const LandingNavbar = () => {
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
-                </a>
+                </div>
               </Link>
             ))}
           </nav>
@@ -145,15 +145,16 @@ const LandingNavbar = () => {
                   <nav className="grid gap-y-5">
                     {navItems.map((item) => (
                       <Link key={item.name} href={item.href}>
-                        <a 
+                        <div 
                           className={`
                             -m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-800
                             ${location === item.href ? 'text-primary dark:text-primary' : 'text-gray-900 dark:text-gray-200'}
+                            cursor-pointer
                           `}
                           onClick={closeMobileMenu}
                         >
                           <span className="ml-3 text-base font-medium">{item.name}</span>
-                        </a>
+                        </div>
                       </Link>
                     ))}
                   </nav>

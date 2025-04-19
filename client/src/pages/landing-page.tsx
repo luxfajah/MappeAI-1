@@ -155,168 +155,169 @@ export default function LandingPage() {
 
           <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:grid-cols-3">
             {/* Plano Gratuito */}
-            <div className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 bg-white">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900/40 bg-white dark:backdrop-blur-md transition-all hover:shadow-md">
               <div className="p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 font-poppins">Gratuito</h3>
-                <p className="mt-4 text-sm text-gray-500">
+                <h3 className="text-lg leading-6 font-medium dark:text-white text-gray-900 font-poppins">Gratuito</h3>
+                <p className="mt-4 text-sm dark:text-gray-300 text-gray-500">
                   Perfeito para começar a explorar as funcionalidades básicas.
                 </p>
                 <p className="mt-8">
-                  <span className="text-4xl font-extrabold text-gray-900">R$0</span>
-                  <span className="text-base font-medium text-gray-500">/mês</span>
+                  <span className="text-4xl font-extrabold dark:text-white text-gray-900">R$0</span>
+                  <span className="text-base font-medium dark:text-gray-300 text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
                   <div 
-                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200 cursor-pointer"
+                    className="mt-8 block w-full dark:bg-gray-800 bg-gray-100 dark:border-gray-700 border border-gray-300 rounded-xl py-3 text-sm font-semibold dark:text-gray-100 text-gray-900 text-center dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer transition-all"
                   >
                     Começar Grátis
                   </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">
-                <h4 className="text-sm font-medium text-gray-900 tracking-wide">O que está incluído:</h4>
+                <h4 className="text-sm font-medium dark:text-white text-gray-900 tracking-wide">O que está incluído:</h4>
                 <ul className="mt-6 space-y-4">
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">5 pesquisas por mês</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">5 pesquisas por mês</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Análise básica de concorrentes</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Análise básica de concorrentes</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Relatórios simples</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Relatórios simples</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Suporte por email</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Suporte por email</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Plano Intermediário */}
-            <div className="border border-primary-600 rounded-lg shadow-sm divide-y divide-gray-200 bg-white">
+            <div className="border-2 border-primary rounded-xl shadow-md dark:shadow-primary/20 divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900/40 bg-white dark:backdrop-blur-md transition-all hover:shadow-lg relative overflow-hidden">
+              <div className="absolute -right-12 top-7 rotate-45 bg-primary px-10 py-1 text-xs font-semibold text-white">Popular</div>
               <div className="p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 font-poppins">Intermediário</h3>
-                <p className="mt-4 text-sm text-gray-500">
+                <h3 className="text-lg leading-6 font-medium dark:text-white text-gray-900 font-poppins">Negócios</h3>
+                <p className="mt-4 text-sm dark:text-gray-300 text-gray-500">
                   Para empresas que buscam análises mais completas.
                 </p>
                 <p className="mt-8">
-                  <span className="text-4xl font-extrabold text-gray-900">R$99</span>
-                  <span className="text-base font-medium text-gray-500">/mês</span>
+                  <span className="text-4xl font-extrabold dark:text-white text-gray-900">R$99</span>
+                  <span className="text-base font-medium dark:text-gray-300 text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
                   <div 
-                    className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center bg-primary hover:bg-primary/90 cursor-pointer"
+                    className="mt-8 block w-full rounded-xl py-3 text-sm font-semibold text-white text-center bg-primary hover:bg-primary/90 cursor-pointer transition-all shadow-md"
                   >
                     Experimente por 14 dias
                   </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">
-                <h4 className="text-sm font-medium text-gray-900 tracking-wide">O que está incluído:</h4>
+                <h4 className="text-sm font-medium dark:text-white text-gray-900 tracking-wide">O que está incluído:</h4>
                 <ul className="mt-6 space-y-4">
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">30 pesquisas por mês</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">30 pesquisas por mês</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Análise avançada de concorrentes</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Análise avançada de concorrentes</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Relatórios detalhados</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Relatórios detalhados</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Exportação em PDF</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Exportação em PDF</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Suporte prioritário</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Suporte prioritário</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Plano Avançado */}
-            <div className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200 bg-white">
+            <div className="border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900/40 bg-white dark:backdrop-blur-md transition-all hover:shadow-md">
               <div className="p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 font-poppins">Avançado</h3>
-                <p className="mt-4 text-sm text-gray-500">
+                <h3 className="text-lg leading-6 font-medium dark:text-white text-gray-900 font-poppins">Empresarial</h3>
+                <p className="mt-4 text-sm dark:text-gray-300 text-gray-500">
                   Solução completa para empresas de médio e grande porte.
                 </p>
                 <p className="mt-8">
-                  <span className="text-4xl font-extrabold text-gray-900">R$299</span>
-                  <span className="text-base font-medium text-gray-500">/mês</span>
+                  <span className="text-4xl font-extrabold dark:text-white text-gray-900">R$299</span>
+                  <span className="text-base font-medium dark:text-gray-300 text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
                   <div 
-                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200 cursor-pointer"
+                    className="mt-8 block w-full dark:bg-gray-800 bg-gray-100 dark:border-gray-700 border border-gray-300 rounded-xl py-3 text-sm font-semibold dark:text-gray-100 text-gray-900 text-center dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer transition-all"
                   >
-                    Experimente por 14 dias
+                    Entre em contato
                   </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">
-                <h4 className="text-sm font-medium text-gray-900 tracking-wide">O que está incluído:</h4>
+                <h4 className="text-sm font-medium dark:text-white text-gray-900 tracking-wide">O que está incluído:</h4>
                 <ul className="mt-6 space-y-4">
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Pesquisas ilimitadas</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Pesquisas ilimitadas</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Análise premium com IA avançada</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Análise premium com IA avançada</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Relatórios personalizados</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Relatórios personalizados</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Integração com outras ferramentas</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Integração com outras ferramentas</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Gerenciamento de equipe</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Gerenciamento de equipe</span>
                   </li>
                   <li className="flex space-x-3">
-                    <svg className="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="flex-shrink-0 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm text-gray-500">Suporte 24/7</span>
+                    <span className="text-sm dark:text-gray-300 text-gray-500">Suporte personalizado 24/7</span>
                   </li>
                 </ul>
               </div>
