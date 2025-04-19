@@ -113,10 +113,10 @@ export default function AuthPage() {
           {/* Login Form */}
           <TabsContent value="login">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 font-poppins">
+              <h2 className="text-2xl font-bold text-foreground font-poppins">
                 Faça login na sua conta
               </h2>
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-sm text-muted-foreground">
                 Acesse sua conta para mapear sua concorrência
               </p>
             </div>
