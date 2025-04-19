@@ -80,7 +80,32 @@ export type ReportContent = {
   featureComparison?: FeatureComparison;
   marketPositioning?: MarketPositioning;
   marketShare?: MarketShare;
+  googleAnalytics?: GoogleAnalyticsData;
+  googleTrends?: GoogleTrendsData;
   conclusions: Conclusions;
+};
+
+export type GoogleAnalyticsData = {
+  keywords: string[];
+  trafficSources: {
+    source: string;
+    percentage: number;
+  }[];
+  averageTimeOnSite?: number;
+  bounceRate?: number;
+  analysis: string;
+};
+
+export type GoogleTrendsData = {
+  interestOverTime: {
+    month: string;
+    value: number;
+  }[];
+  relatedTopics: {
+    name: string;
+    growth: string;
+  }[];
+  analysis: string;
 };
 
 export type Competitor = {

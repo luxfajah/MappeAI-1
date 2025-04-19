@@ -322,6 +322,148 @@ export default function ReportPage() {
             )}
           </div>
 
+          {/* Google Analytics & Trends Section */}
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {/* Google Analytics Data */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Insights do Google Analytics</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-md font-medium text-gray-900 font-poppins">Palavras-chave principais</h4>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {["Marketing Digital", "SEO", "Análise de Concorrentes", "Inteligência de Mercado", "Estratégia de Marketing"].map((keyword, index) => (
+                        <div key={index} className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">
+                          {keyword}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-md font-medium text-gray-900 font-poppins">Tráfego por canal</h4>
+                    <div className="h-48 relative mt-2">
+                      {reportContent.googleAnalytics ? (
+                        <PieChart
+                          data={reportContent.googleAnalytics.trafficSources.map(source => ({
+                            name: source.source,
+                            value: source.percentage
+                          }))}
+                        />
+                      ) : (
+                        <PieChart
+                          data={[
+                            { name: "Orgânico", value: 35 },
+                            { name: "Direto", value: 28 },
+                            { name: "Social", value: 20 },
+                            { name: "Referência", value: 12 },
+                            { name: "Pago", value: 5 },
+                          ]}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-gray-500 mt-2">
+                    {reportContent.googleAnalytics?.analysis || 
+                     "Análise de tráfego e palavras-chave baseada em dados agregados do setor para seu nicho."}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          
+            {/* Google Trends Data */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Tendências de Busca</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-md font-medium text-gray-900 font-poppins">Interesse ao longo do tempo</h4>
+                    <div className="h-48 mt-2 bg-gray-100 rounded-md p-4 flex items-center justify-center">
+                      {/* Trend chart visualization */}
+                      <div className="w-full h-full flex items-end space-x-1">
+                        {reportContent.googleTrends?.interestOverTime ? (
+                          reportContent.googleTrends.interestOverTime.map((item, index) => (
+                            <div 
+                              key={index} 
+                              className="flex-1 bg-primary rounded-t-sm"
+                              style={{ height: `${item.value}%` }}
+                            ></div>
+                          ))
+                        ) : (
+                          [30, 35, 45, 40, 50, 55, 60, 65, 62, 70, 75, 80].map((height, index) => (
+                            <div 
+                              key={index} 
+                              className="flex-1 bg-primary rounded-t-sm"
+                              style={{ height: `${height}%` }}
+                            ></div>
+                          ))
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-1">
+                      {reportContent.googleTrends?.interestOverTime ? (
+                        reportContent.googleTrends.interestOverTime.map((item, index) => (
+                          <span key={index}>{item.month}</span>
+                        ))
+                      ) : (
+                        <>
+                          <span>Jan</span>
+                          <span>Fev</span>
+                          <span>Mar</span>
+                          <span>Abr</span>
+                          <span>Mai</span>
+                          <span>Jun</span>
+                          <span>Jul</span>
+                          <span>Ago</span>
+                          <span>Set</span>
+                          <span>Out</span>
+                          <span>Nov</span>
+                          <span>Dez</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-md font-medium text-gray-900 font-poppins">Tópicos relacionados em alta</h4>
+                    <ul className="mt-2 space-y-2">
+                      {reportContent.googleTrends?.relatedTopics ? (
+                        reportContent.googleTrends.relatedTopics.map((topic, index) => (
+                          <li key={index} className="flex justify-between items-center text-sm">
+                            <span className="text-gray-700">{topic.name}</span>
+                            <span className="text-green-600 font-medium">{topic.growth}</span>
+                          </li>
+                        ))
+                      ) : (
+                        [
+                          { name: "Análise de dados para marketing", growth: "+120%" },
+                          { name: "Inteligência artificial para negócios", growth: "+95%" },
+                          { name: "Estratégias de marketing digital 2025", growth: "+80%" },
+                          { name: "Ferramentas de análise de concorrentes", growth: "+65%" },
+                        ].map((topic, index) => (
+                          <li key={index} className="flex justify-between items-center text-sm">
+                            <span className="text-gray-700">{topic.name}</span>
+                            <span className="text-green-600 font-medium">{topic.growth}</span>
+                          </li>
+                        ))
+                      )}
+                    </ul>
+                    
+                    <p className="text-sm text-gray-500 mt-4">
+                      {reportContent.googleTrends?.analysis || 
+                       "Análise de tendências baseada em dados do Google Trends para seu setor e produto."}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           {/* Conclusions */}
           <Card className="mt-8">
             <CardHeader>

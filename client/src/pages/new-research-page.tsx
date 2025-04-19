@@ -525,6 +525,55 @@ export default function NewResearchPage() {
                           </FormItem>
                         )}
                       />
+                      
+                      {/* Google Analytics e Google Trends */}
+                      <div className="mt-8 space-y-4 border-t pt-6">
+                        <h4 className="text-sm font-medium text-gray-700">Fontes de dados adicionais</h4>
+                        
+                        <FormField
+                          control={form.control}
+                          name="includeGoogleAnalytics"
+                          render={({ field }) => (
+                            <FormItem className="flex items-start space-x-3 space-y-0">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value}
+                                  onCheckedChange={field.onChange}
+                                  disabled={createResearchMutation.isPending}
+                                />
+                              </FormControl>
+                              <div className="space-y-1 leading-none">
+                                <FormLabel>Google Analytics</FormLabel>
+                                <FormDescription>
+                                  Incluir dados do Google Analytics sobre palavras-chave, tráfego e desempenho de nichos.
+                                </FormDescription>
+                              </div>
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="includeGoogleTrends"
+                          render={({ field }) => (
+                            <FormItem className="flex items-start space-x-3 space-y-0">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value}
+                                  onCheckedChange={field.onChange}
+                                  disabled={createResearchMutation.isPending}
+                                />
+                              </FormControl>
+                              <div className="space-y-1 leading-none">
+                                <FormLabel>Google Trends</FormLabel>
+                                <FormDescription>
+                                  Incluir tendências de busca e interesse ao longo do tempo para seu nicho e produtos.
+                                </FormDescription>
+                              </div>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
