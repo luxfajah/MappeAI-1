@@ -1,13 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 97%;
+    --foreground: 0 0% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+ 
+    --primary: 264 88% 60%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 11%;
+ 
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 33%;
+ 
+    --accent: 264 88% 60%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 64% 50%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 264 88% 60%;
+ 
+    --radius: 1rem;
+  }
+ 
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 100%;
+ 
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 100%;
+ 
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 100%;
+ 
+    --primary: 264 88% 60%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 264 73% 42%;
+    --secondary-foreground: 0 0% 100%;
+ 
+    --muted: 0 0% 11%;
+    --muted-foreground: 0 0% 70%;
+ 
+    --accent: 264 88% 60%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 64% 50%;
+    --success-foreground: 0 0% 100%;
+ 
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 264 88% 60%;
+  }
+}
+ 
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+  
+  h3 {
+    @apply text-xl font-medium;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+    background-image: url('/noise-texture.png');
+    background-blend-mode: overlay;
+    background-size: 200px;
+    background-opacity: 0.05;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white rounded-2xl px-4 py-2 shadow-md font-medium text-sm uppercase transition-colors hover:bg-[#5A25B0];
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-primary text-primary rounded-2xl px-4 py-2 font-medium text-sm uppercase transition-colors hover:bg-[#1C1C1C];
+  }
+  
+  .card {
+    @apply dark:bg-[#1C1C1C] bg-white p-4 rounded-2xl shadow-lg transition-transform hover:scale-[1.01];
+  }
+  
+  .input-field {
+    @apply dark:bg-[#0F0F0F] bg-[#F8F8F8] border border-[#5A25B0] rounded-xl px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary;
   }
 }
