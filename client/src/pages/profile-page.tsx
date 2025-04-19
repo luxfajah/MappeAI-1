@@ -27,7 +27,8 @@ const mockSubscription = {
 };
 
 const updateProfileSchema = z.object({
-  name: z.string().min(3, "Nome deve ter pelo menos 3 caracteres"),
+  firstName: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
+  lastName: z.string().optional(),
   email: z.string().email("Email inválido"),
 });
 
@@ -54,7 +55,8 @@ export default function ProfilePage() {
   const profileForm = useForm<UpdateProfileValues>({
     resolver: zodResolver(updateProfileSchema),
     defaultValues: {
-      name: user?.name || "",
+      firstName: user?.firstName || "",
+      lastName: user?.lastName || "",
       email: user?.email || "",
     },
   });
@@ -221,7 +223,7 @@ export default function ProfilePage() {
                     <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                       <UserIcon className="h-12 w-12 text-primary" />
                     </div>
-                    <h3 className="font-medium text-lg">{user.name || user.username}</h3>
+                    <h3 className="font-medium text-lg">{user.firstName} {user.lastName || ''}</h3>
                     <p className="text-muted-foreground text-sm flex items-center justify-center mt-1">
                       <Mail className="h-4 w-4 mr-1" />
                       {user.email || 'Email não disponível'}
@@ -248,10 +250,24 @@ export default function ProfilePage() {
                         <form onSubmit={profileForm.handleSubmit(onProfileSubmit)} className="space-y-4">
                           <FormField
                             control={profileForm.control}
-                            name="name"
+                            name="firstName"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Nome completo</FormLabel>
+                                <FormLabel>Nome</FormLabel>
+                                <FormControl>
+                                  <Input {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          
+                          <FormField
+                            control={profileForm.control}
+                            name="lastName"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Sobrenome</FormLabel>
                                 <FormControl>
                                   <Input {...field} />
                                 </FormControl>

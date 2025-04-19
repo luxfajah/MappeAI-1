@@ -133,10 +133,25 @@ export default function Navbar() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem>
-                    <User className="mr-2 h-4 w-4" />
-                    <span>Perfil</span>
-                  </DropdownMenuItem>
+                  <Link href="/profile">
+                    <DropdownMenuItem>
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Meu Perfil</span>
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href="/subscription">
+                    <DropdownMenuItem>
+                      <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M7 10H3V14H7V10Z" />
+                        <path d="M21 10H11V14H21V10Z" />
+                        <path d="M11 4H3V8H11V4Z" />
+                        <path d="M21 4H17V8H21V4Z" />
+                        <path d="M7 16H3V20H7V16Z" />
+                        <path d="M21 16H11V20H21V16Z" />
+                      </svg>
+                      <span>Planos e Assinatura</span>
+                    </DropdownMenuItem>
+                  </Link>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
@@ -197,7 +212,37 @@ export default function Navbar() {
                     ))}
                   </div>
                   
-                  {/* Logout for mobile */}
+                  {/* Profile & Subscription for mobile */}
+                  <div className="space-y-1 border-t pt-4 mt-4">
+                    <Link href="/profile">
+                      <div 
+                        className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <User className="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" />
+                        Meu Perfil
+                      </div>
+                    </Link>
+                    
+                    <Link href="/subscription">
+                      <div 
+                        className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md cursor-pointer"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <svg className="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M7 10H3V14H7V10Z" />
+                          <path d="M21 10H11V14H21V10Z" />
+                          <path d="M11 4H3V8H11V4Z" />
+                          <path d="M21 4H17V8H21V4Z" />
+                          <path d="M7 16H3V20H7V16Z" />
+                          <path d="M21 16H11V20H21V16Z" />
+                        </svg>
+                        Planos e Assinatura
+                      </div>
+                    </Link>
+                  </div>
+                  
+                  {/* Theme & Logout for mobile */}
                   <div className="pt-4 border-t">
                     <div className="flex items-center justify-between px-2 py-3">
                       <span className="text-sm font-medium text-gray-700">Tema</span>

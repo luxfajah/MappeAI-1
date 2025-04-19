@@ -11,6 +11,8 @@ import AuthPage from "@/pages/auth-page";
 import DashboardPage from "@/pages/dashboard-page";
 import NewResearchPage from "@/pages/new-research-page";
 import ReportPage from "@/pages/report-page";
+import ProfilePage from "@/pages/profile-page";
+import SubscriptionPage from "@/pages/subscription-page";
 import { ProtectedRoute } from "./lib/protected-route";
 
 function Router() {
@@ -21,6 +23,8 @@ function Router() {
       <ProtectedRoute path="/dashboard" component={DashboardPage} />
       <ProtectedRoute path="/research/new" component={NewResearchPage} />
       <ProtectedRoute path="/report/:id" component={ReportPage} />
+      <ProtectedRoute path="/profile" component={ProfilePage} />
+      <Route path="/subscription" component={SubscriptionPage} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
