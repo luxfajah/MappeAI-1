@@ -44,14 +44,14 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 export default function AuthPage() {
   const [, setLocation] = useLocation();
   const { user, loginMutation, registerMutation } = useAuth();
-  
+
   // Redirect to dashboard if already logged in
   useEffect(() => {
     if (user) {
       setLocation("/dashboard");
     }
   }, [user, setLocation]);
-  
+
   // Login form
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -61,7 +61,7 @@ export default function AuthPage() {
       remember: false,
     },
   });
-  
+
   // Register form
   const registerForm = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -75,7 +75,7 @@ export default function AuthPage() {
       terms: false,
     },
   });
-  
+
   // Handle login form submission
   function onLoginSubmit(data: LoginFormValues) {
     loginMutation.mutate({
@@ -83,33 +83,33 @@ export default function AuthPage() {
       password: data.password,
     });
   }
-  
+
   // Handle register form submission
   function onRegisterSubmit(data: RegisterFormValues) {
     const { confirmPassword, terms, ...userData } = data;
-    
+
     registerMutation.mutate({
       ...userData,
       subscriptionTier: "gratuito",
     });
   }
-  
+
   return (
     <div className="min-h-screen flex items-stretch">
       {/* Left side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#1C1C1C]">
         <div className="mb-12 text-center">
           <Link href="/">
             <span className="text-primary font-bold text-2xl font-poppins">Mappe.ia</span>
           </Link>
         </div>
-        
+
         <Tabs defaultValue="login" className="max-w-md mx-auto w-full">
           <TabsList className="grid grid-cols-2 w-full mb-8">
             <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="register">Cadastro</TabsTrigger>
           </TabsList>
-          
+
           {/* Login Form */}
           <TabsContent value="login">
             <div className="mb-6">
@@ -120,7 +120,7 @@ export default function AuthPage() {
                 Acesse sua conta para mapear sua concorrência
               </p>
             </div>
-            
+
             <Form {...loginForm}>
               <form onSubmit={loginForm.handleSubmit(onLoginSubmit)} className="space-y-6">
                 <FormField
@@ -140,7 +140,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={loginForm.control}
                   name="password"
@@ -159,7 +159,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <div className="flex items-center justify-between">
                   <FormField
                     control={loginForm.control}
@@ -179,12 +179,12 @@ export default function AuthPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <a href="#" className="text-sm font-medium text-primary hover:text-primary/80">
                     Esqueci minha senha
                   </a>
                 </div>
-                
+
                 <Button
                   type="submit"
                   className="w-full"
@@ -194,7 +194,7 @@ export default function AuthPage() {
                 </Button>
               </form>
             </Form>
-            
+
             <div className="mt-6">
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -206,7 +206,7 @@ export default function AuthPage() {
                   </span>
                 </div>
               </div>
-              
+
               <div className="mt-6 grid grid-cols-2 gap-3">
                 <Button variant="outline" className="w-full">
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
@@ -238,7 +238,7 @@ export default function AuthPage() {
               </div>
             </div>
           </TabsContent>
-          
+
           {/* Registration Form */}
           <TabsContent value="register">
             <div className="mb-6">
@@ -249,7 +249,7 @@ export default function AuthPage() {
                 Mapeie sua concorrência com inteligência artificial
               </p>
             </div>
-            
+
             <Form {...registerForm}>
               <form onSubmit={registerForm.handleSubmit(onRegisterSubmit)} className="space-y-6">
                 <FormField
@@ -269,7 +269,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="lastName"
@@ -287,7 +287,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="email"
@@ -306,7 +306,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="username"
@@ -324,7 +324,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="password"
@@ -343,7 +343,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="confirmPassword"
@@ -362,7 +362,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={registerForm.control}
                   name="terms"
@@ -391,7 +391,7 @@ export default function AuthPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 <Button
                   type="submit"
                   className="w-full"
@@ -404,7 +404,7 @@ export default function AuthPage() {
           </TabsContent>
         </Tabs>
       </div>
-      
+
       {/* Right side - Hero */}
       <div className="hidden lg:block lg:w-1/2 bg-gradient-to-r from-primary to-primary-600">
         <div className="flex items-center justify-center h-full px-8">
