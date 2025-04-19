@@ -272,12 +272,11 @@ export default function LandingPage() {
                   <span className="text-base font-medium text-gray-500">/mês</span>
                 </p>
                 <Link href="/auth">
-                  <Button 
-                    variant="outline" 
-                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200"
+                  <div 
+                    className="mt-8 block w-full bg-gray-100 border border-gray-800 rounded-md py-2 text-sm font-semibold text-gray-900 text-center hover:bg-gray-200 cursor-pointer"
                   >
                     Experimente por 14 dias
-                  </Button>
+                  </div>
                 </Link>
               </div>
               <div className="pt-6 pb-8 px-6">

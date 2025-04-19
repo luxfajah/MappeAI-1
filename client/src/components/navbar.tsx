@@ -27,6 +27,7 @@ import {
   ChevronDown
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -115,6 +116,8 @@ export default function Navbar() {
                 }</span>
               </span>
               
+              <ThemeToggle />
+              
               <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-500">
                 <Bell className="h-5 w-5" />
               </Button>
@@ -196,6 +199,11 @@ export default function Navbar() {
                   
                   {/* Logout for mobile */}
                   <div className="pt-4 border-t">
+                    <div className="flex items-center justify-between px-2 py-3">
+                      <span className="text-sm font-medium text-gray-700">Tema</span>
+                      <ThemeToggle />
+                    </div>
+                    
                     <Button 
                       variant="ghost" 
                       className="w-full justify-start text-gray-500 hover:text-gray-700"
