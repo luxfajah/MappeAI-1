@@ -74,7 +74,7 @@ export default function ProfilePage() {
     try {
       setIsUpdatingProfile(true);
       const response = await apiRequest('PATCH', '/api/user', data);
-      
+
       if (response.ok) {
         queryClient.invalidateQueries({ queryKey: ['/api/user'] });
         toast({
@@ -103,7 +103,7 @@ export default function ProfilePage() {
         currentPassword: data.currentPassword,
         newPassword: data.newPassword,
       });
-      
+
       if (response.ok) {
         toast({
           title: "Senha atualizada",
@@ -129,11 +129,11 @@ export default function ProfilePage() {
     if (!confirm("Tem certeza que deseja cancelar sua assinatura? Você perderá o acesso aos recursos premium ao final do período de faturamento.")) {
       return;
     }
-    
+
     try {
       setIsCancellingSubscription(true);
       const response = await apiRequest('POST', '/api/cancel-subscription');
-      
+
       if (response.ok) {
         queryClient.invalidateQueries({ queryKey: ['/api/user'] });
         toast({
@@ -170,9 +170,9 @@ export default function ProfilePage() {
   // Redirecionar para a página de autenticação se não houver usuário logado
   if (!user) {
     return (
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-background text-foreground">
         <Navbar />
-        
+
         <main className="flex-1 py-16">
           <div className="container mx-auto px-4 text-center">
             <Alert variant="destructive" className="max-w-md mx-auto">
@@ -189,26 +189,26 @@ export default function ProfilePage() {
             </Alert>
           </div>
         </main>
-        
+
         <Footer />
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Navbar />
-      
+
       <main className="flex-1 py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-8">Perfil & Assinatura</h1>
-          
+
           <Tabs defaultValue="profile" className="max-w-4xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 mb-8">
               <TabsTrigger value="profile">Perfil</TabsTrigger>
               <TabsTrigger value="subscription">Assinatura</TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="profile">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Card de informações do usuário */}
@@ -236,7 +236,7 @@ export default function ProfilePage() {
                     </Button>
                   </CardFooter>
                 </Card>
-                
+
                 {/* Cards de edição */}
                 <div className="col-span-1 md:col-span-2 space-y-8">
                   {/* Editar perfil */}
@@ -261,7 +261,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={profileForm.control}
                             name="lastName"
@@ -275,7 +275,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={profileForm.control}
                             name="email"
@@ -289,7 +289,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <Button type="submit" disabled={isUpdatingProfile}>
                             {isUpdatingProfile ? "Salvando..." : "Salvar alterações"}
                           </Button>
@@ -297,7 +297,7 @@ export default function ProfilePage() {
                       </Form>
                     </CardContent>
                   </Card>
-                  
+
                   {/* Alterar senha */}
                   <Card>
                     <CardHeader>
@@ -320,7 +320,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={passwordForm.control}
                             name="newPassword"
@@ -334,7 +334,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={passwordForm.control}
                             name="confirmNewPassword"
@@ -348,7 +348,7 @@ export default function ProfilePage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <Button type="submit" disabled={isUpdatingPassword}>
                             {isUpdatingPassword ? "Atualizando..." : "Atualizar senha"}
                           </Button>
@@ -359,7 +359,7 @@ export default function ProfilePage() {
                 </div>
               </div>
             </TabsContent>
-            
+
             <TabsContent value="subscription">
               <div className="grid grid-cols-1 gap-8">
                 {/* Status da assinatura atual */}
@@ -393,7 +393,7 @@ export default function ProfilePage() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div>
                         <div className="space-y-4">
                           <div>
@@ -421,7 +421,7 @@ export default function ProfilePage() {
                     </Button>
                   </CardFooter>
                 </Card>
-                
+
                 {/* Histórico de faturas */}
                 <Card>
                   <CardHeader>
@@ -466,7 +466,7 @@ export default function ProfilePage() {
           </Tabs>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

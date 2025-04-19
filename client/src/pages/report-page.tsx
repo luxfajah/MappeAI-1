@@ -62,7 +62,7 @@ export default function ReportPage() {
 
   const handleExportPDF = () => {
     setPdfGenerating(true);
-    
+
     // Simulating PDF generation
     setTimeout(() => {
       setPdfGenerating(false);
@@ -82,7 +82,7 @@ export default function ReportPage() {
 
   if (isLoadingResearch || isLoadingReport) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Navbar />
         <main className="flex-grow py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +99,7 @@ export default function ReportPage() {
 
   if (researchError || reportError || !research || !report) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Navbar />
         <main className="flex-grow py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,15 +129,15 @@ export default function ReportPage() {
 
   // Format the creation date
   const formattedDate = format(new Date(research.createdAt), "dd/MM/yyyy", { locale: ptBR });
-  
+
   // Extract report content
   const reportContent: ReportContent = report.content;
   const competitors = reportContent.competitors || [];
-  
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      
+
       <main className="flex-grow py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -341,7 +341,7 @@ export default function ReportPage() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-md font-medium text-gray-900 font-poppins">Tráfego por canal</h4>
                     <div className="h-48 relative mt-2">
@@ -365,7 +365,7 @@ export default function ReportPage() {
                       )}
                     </div>
                   </div>
-                  
+
                   <p className="text-sm text-gray-500 mt-2">
                     {reportContent.googleAnalytics?.analysis || 
                      "Análise de tráfego e palavras-chave baseada em dados agregados do setor para seu nicho."}
@@ -373,7 +373,7 @@ export default function ReportPage() {
                 </div>
               </CardContent>
             </Card>
-          
+
             {/* Google Trends Data */}
             <Card>
               <CardHeader>
@@ -428,7 +428,7 @@ export default function ReportPage() {
                       )}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-md font-medium text-gray-900 font-poppins">Tópicos relacionados em alta</h4>
                     <ul className="mt-2 space-y-2">
@@ -453,7 +453,7 @@ export default function ReportPage() {
                         ))
                       )}
                     </ul>
-                    
+
                     <p className="text-sm text-gray-500 mt-4">
                       {reportContent.googleTrends?.analysis || 
                        "Análise de tendências baseada em dados do Google Trends para seu setor e produto."}

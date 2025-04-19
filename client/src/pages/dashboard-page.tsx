@@ -63,7 +63,7 @@ export default function DashboardPage() {
   }
   
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
       
       <main className="flex-grow py-10">

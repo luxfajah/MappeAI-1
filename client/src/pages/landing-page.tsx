@@ -8,7 +8,7 @@ export default function LandingPage() {
   const { user } = useAuth();
   
   return (
-    <div className="min-h-screen flex flex-col dark:bg-black bg-white">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <LandingNavbar />
       
       {/* Hero Section */}

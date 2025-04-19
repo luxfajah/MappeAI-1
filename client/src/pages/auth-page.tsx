@@ -97,7 +97,7 @@ export default function AuthPage() {
   return (
     <div className="min-h-screen flex items-stretch">
       {/* Left side - Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#1C1C1C]">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="mb-12 text-center">
           <Link href="/">
             <span className="text-primary font-bold text-2xl font-poppins">Mappe.ia</span>
