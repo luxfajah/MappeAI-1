@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +10,8 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import SimpleMap from "@/components/simple-map";
+import { countries, states, cities, productCategories, salesChannels } from "@/data/locations";
 import {
   Form,
   FormControl,
@@ -30,7 +32,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Loader2, Search } from "lucide-react";
 
 const formSchema = z.object({
   title: z.string().min(5, {
@@ -39,17 +42,28 @@ const formSchema = z.object({
   product: z.string().min(3, {
     message: "O produto/serviço deve ter pelo menos 3 caracteres",
   }),
-  sector: z.string().min(1, {
-    message: "Selecione um setor",
+  productCategory: z.string().min(1, {
+    message: "Selecione uma categoria de produto/serviço",
   }),
-  location: z.string().min(1, {
-    message: "Selecione uma localização",
+  salesChannels: z.array(z.string()).min(1, {
+    message: "Selecione pelo menos um canal de vendas",
+  }),
+  country: z.string().min(1, {
+    message: "Selecione um país",
+  }),
+  state: z.string().min(1, {
+    message: "Selecione um estado",
+  }),
+  city: z.string().min(1, {
+    message: "Selecione uma cidade",
   }),
   autoFindCompetitors: z.boolean().default(false),
   competitors: z.string().optional(),
   aspectsToAnalyze: z.array(z.string()).refine((value) => value.length > 0, {
     message: "Selecione pelo menos um aspecto para analisar",
   }),
+  includeGoogleAnalytics: z.boolean().default(true),
+  includeGoogleTrends: z.boolean().default(true),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -58,19 +72,45 @@ export default function NewResearchPage() {
   const [, setLocation] = useLocation();
   const { user } = useAuth();
   const { toast } = useToast();
+  const [selectedState, setSelectedState] = useState<string | null>(null);
+  const [availableCities, setAvailableCities] = useState<string[]>([]);
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
       product: "",
-      sector: "",
-      location: "",
+      productCategory: "",
+      salesChannels: [],
+      country: "BR", // Default to Brazil
+      state: "",
+      city: "",
       autoFindCompetitors: false,
       competitors: "",
       aspectsToAnalyze: ["preco", "produtos", "marketing", "online"],
+      includeGoogleAnalytics: true,
+      includeGoogleTrends: true,
     },
   });
+  
+  // Atualiza as cidades disponíveis quando o estado é alterado
+  useEffect(() => {
+    const stateValue = form.watch("state");
+    if (stateValue) {
+      setSelectedState(stateValue);
+      setAvailableCities(cities[stateValue as keyof typeof cities] || []);
+      form.setValue("city", ""); // Limpa a cidade quando o estado muda
+    }
+  }, [form.watch("state")]);
+  
+  // Atualiza a cidade selecionada
+  useEffect(() => {
+    const cityValue = form.watch("city");
+    if (cityValue) {
+      setSelectedCity(cityValue);
+    }
+  }, [form.watch("city")]);
   
   const aspectOptions = [
     { value: "preco", label: "Preços e modelos de negócio" },
@@ -183,10 +223,10 @@ export default function NewResearchPage() {
 
                       <FormField
                         control={form.control}
-                        name="sector"
+                        name="productCategory"
                         render={({ field }) => (
                           <FormItem className="sm:col-span-3">
-                            <FormLabel>Setor de atuação</FormLabel>
+                            <FormLabel>Categoria do Produto/Serviço</FormLabel>
                             <Select 
                               onValueChange={field.onChange} 
                               defaultValue={field.value}
@@ -194,19 +234,15 @@ export default function NewResearchPage() {
                             >
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Selecione um setor" />
+                                  <SelectValue placeholder="Selecione uma categoria" />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent>
-                                <SelectItem value="tecnologia">Tecnologia</SelectItem>
-                                <SelectItem value="saude">Saúde</SelectItem>
-                                <SelectItem value="educacao">Educação</SelectItem>
-                                <SelectItem value="varejo">Varejo</SelectItem>
-                                <SelectItem value="servicos">Serviços</SelectItem>
-                                <SelectItem value="ecommerce">E-commerce</SelectItem>
-                                <SelectItem value="financas">Finanças</SelectItem>
-                                <SelectItem value="alimentacao">Alimentação</SelectItem>
-                                <SelectItem value="outro">Outro</SelectItem>
+                              <SelectContent className="max-h-[300px]">
+                                {productCategories.map((category) => (
+                                  <SelectItem key={category.id} value={category.id}>
+                                    {category.name}
+                                  </SelectItem>
+                                ))}
                               </SelectContent>
                             </Select>
                             <FormMessage />
@@ -216,31 +252,159 @@ export default function NewResearchPage() {
 
                       <FormField
                         control={form.control}
-                        name="location"
-                        render={({ field }) => (
+                        name="salesChannels"
+                        render={() => (
                           <FormItem className="sm:col-span-3">
-                            <FormLabel>Localização geográfica</FormLabel>
-                            <Select 
-                              onValueChange={field.onChange} 
-                              defaultValue={field.value}
-                              disabled={createResearchMutation.isPending}
-                            >
-                              <FormControl>
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Selecione uma opção" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="local">Local (cidade)</SelectItem>
-                                <SelectItem value="regional">Regional (estado)</SelectItem>
-                                <SelectItem value="nacional">Nacional (país)</SelectItem>
-                                <SelectItem value="internacional">Internacional</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
+                            <div className="mb-4">
+                              <FormLabel>Canais de Venda</FormLabel>
+                              <FormDescription>
+                                Selecione os canais de venda do seu negócio
+                              </FormDescription>
+                              <FormMessage />
+                            </div>
+                            <div className="space-y-2 max-h-[150px] overflow-y-auto">
+                              {salesChannels.map((channel) => (
+                                <FormField
+                                  key={channel.id}
+                                  control={form.control}
+                                  name="salesChannels"
+                                  render={({ field }) => {
+                                    return (
+                                      <FormItem
+                                        key={channel.id}
+                                        className="flex flex-row items-start space-x-3 space-y-0"
+                                      >
+                                        <FormControl>
+                                          <Checkbox
+                                            checked={field.value?.includes(channel.id)}
+                                            onCheckedChange={(checked) => {
+                                              return checked
+                                                ? field.onChange([...field.value, channel.id])
+                                                : field.onChange(
+                                                    field.value?.filter(
+                                                      (value) => value !== channel.id
+                                                    )
+                                                  );
+                                            }}
+                                            disabled={createResearchMutation.isPending}
+                                          />
+                                        </FormControl>
+                                        <FormLabel className="font-normal text-sm">
+                                          {channel.name}
+                                        </FormLabel>
+                                      </FormItem>
+                                    );
+                                  }}
+                                />
+                              ))}
+                            </div>
                           </FormItem>
                         )}
                       />
+                      
+                      {/* Localização */}
+                      <div className="sm:col-span-6 bg-gray-50 p-4 rounded-lg border border-gray-200 mt-4">
+                        <h4 className="text-md font-medium mb-2">Localização do Negócio</h4>
+                        
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                          <FormField
+                            control={form.control}
+                            name="country"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>País</FormLabel>
+                                <Select 
+                                  onValueChange={field.onChange} 
+                                  defaultValue={field.value}
+                                  disabled={createResearchMutation.isPending}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecione um país" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {countries.map((country) => (
+                                      <SelectItem key={country.id} value={country.id}>
+                                        {country.name}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          
+                          <FormField
+                            control={form.control}
+                            name="state"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Estado</FormLabel>
+                                <Select 
+                                  onValueChange={field.onChange} 
+                                  defaultValue={field.value}
+                                  disabled={createResearchMutation.isPending || !form.watch("country")}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecione um estado" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {states["BR"].map((state) => (
+                                      <SelectItem key={state.id} value={state.id}>
+                                        {state.name}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          
+                          <FormField
+                            control={form.control}
+                            name="city"
+                            render={({ field }) => (
+                              <FormItem className="sm:col-span-2">
+                                <FormLabel>Cidade</FormLabel>
+                                <Select 
+                                  onValueChange={field.onChange} 
+                                  defaultValue={field.value}
+                                  disabled={createResearchMutation.isPending || !form.watch("state")}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Selecione uma cidade" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    {availableCities.map((city) => (
+                                      <SelectItem key={city} value={city}>
+                                        {city}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        
+                        {selectedCity && (
+                          <div className="mt-4">
+                            <SimpleMap 
+                              locations={[]} 
+                              cityName={selectedCity} 
+                              className="h-[200px] w-full" 
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
 

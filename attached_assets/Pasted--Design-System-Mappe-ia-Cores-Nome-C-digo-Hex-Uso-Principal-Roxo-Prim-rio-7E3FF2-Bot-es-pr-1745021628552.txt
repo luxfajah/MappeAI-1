@@ -1,0 +1,123 @@
+
+🎨 Design System – Mappe.ia
+🟣 Cores
+
+Nome	Código Hex	Uso Principal
+Roxo Primário	#7E3FF2	Botões principais, destaques, links
+Roxo Escuro	#5A25B0	Hover de botões, bordas ativas
+Preto Fundo	#0F0F0F	Background principal
+Cinza Escuro	#1C1C1C	Cards, seções internas
+Cinza Texto	#B3B3B3	Textos secundários
+Branco	#FFFFFF	Texto primário, ícones em fundo escuro
+Vermelho Erro	#FF4C4C	Validação de formulário, alertas
+Verde Sucesso	#30D158	Mensagens de sucesso, status positivos
+🔤 Tipografia
+Fonte Primária:
+
+Inter (Google Fonts)
+
+Alternativas seguras: Arial, Helvetica
+
+Estilos de Texto:
+
+
+Elemento	Estilo
+Título H1	text-4xl, font-bold, text-white
+Título H2	text-2xl, font-semibold, text-white
+Subtítulo	text-xl, font-medium, text-gray-400
+Texto normal	text-base, font-normal, text-white
+Texto botão	text-sm, uppercase, font-medium
+Legenda	text-xs, text-gray-500
+⭕ Botões
+Primário (Roxo):
+
+Fundo: #7E3FF2
+
+Hover: #5A25B0
+
+Texto: #FFFFFF
+
+Borda: border-0
+
+rounded-2xl, px-4, py-2, shadow-md
+
+Secundário (Transparente com borda):
+
+Fundo: transparent
+
+Borda: 1px solid #7E3FF2
+
+Texto: #7E3FF2
+
+Hover: bg-[#1C1C1C]
+
+Desabilitado:
+
+Opacidade: opacity-50, cursor: not-allowed
+
+📦 Cards
+Fundo: #1C1C1C
+
+Padding: p-4
+
+Bordas: rounded-2xl
+
+Sombra: shadow-lg
+
+Título: text-xl, font-semibold
+
+Texto: text-sm, text-gray-300
+
+Hover: leve elevação com scale-105 e transition
+
+🧱 Inputs e Formulários
+Fundo: #0F0F0F
+
+Borda: 1px solid #5A25B0
+
+Arredondamento: rounded-xl
+
+Padding: px-3 py-2
+
+Texto: text-base, text-white
+
+Placeholder: text-gray-500
+
+Focus: outline-none, ring-2 ring-purple-500
+
+🧭 Navegação
+Navbar fixa no topo
+
+Fundo: #0F0F0F, border-b border-gray-800
+
+Logotipo à esquerda
+
+Links à direita: cor roxa com hover branco
+
+🧩 Outros Componentes
+Alertas/Toasts:
+
+Sucesso: fundo verde, ícone check
+
+Erro: fundo vermelho, ícone de alerta
+
+Modal:
+
+Fundo escuro translúcido: bg-black/60
+
+Container: rounded-2xl, p-6, max-w-md
+
+Tags e Badges:
+
+Fundo roxo com texto branco
+
+Pequenas, text-xs, rounded-full, px-2 py-1
+
+📏 Espaçamentos & Layout
+Grelha: max-w-6xl mx-auto
+
+Padding lateral: px-4 md:px-8
+
+Espaçamento vertical entre seções: py-8 ou py-12
+
+Gap padrão entre elementos: gap-4 ou gap-6
