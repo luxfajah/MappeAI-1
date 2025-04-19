@@ -75,7 +75,7 @@ export default function NewResearchPage() {
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [availableCities, setAvailableCities] = useState<string[]>([]);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
-  
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -93,7 +93,7 @@ export default function NewResearchPage() {
       includeGoogleTrends: true,
     },
   });
-  
+
   // Atualiza as cidades disponíveis quando o estado é alterado
   useEffect(() => {
     const stateValue = form.watch("state");
@@ -103,7 +103,7 @@ export default function NewResearchPage() {
       form.setValue("city", ""); // Limpa a cidade quando o estado muda
     }
   }, [form.watch("state")]);
-  
+
   // Atualiza a cidade selecionada
   useEffect(() => {
     const cityValue = form.watch("city");
@@ -111,7 +111,7 @@ export default function NewResearchPage() {
       setSelectedCity(cityValue);
     }
   }, [form.watch("city")]);
-  
+
   const aspectOptions = [
     { value: "preco", label: "Preços e modelos de negócio" },
     { value: "produtos", label: "Produtos ou serviços" },
@@ -121,7 +121,7 @@ export default function NewResearchPage() {
     { value: "diferenciais", label: "Diferenciais competitivos" },
     { value: "swot", label: "Análise SWOT" },
   ];
-  
+
   const createResearchMutation = useMutation({
     mutationFn: async (data: FormValues) => {
       const response = await apiRequest("POST", "/api/researches", {
@@ -133,12 +133,12 @@ export default function NewResearchPage() {
     onSuccess: (research: Research) => {
       queryClient.invalidateQueries({ queryKey: ["/api/researches"] });
       queryClient.invalidateQueries({ queryKey: ["/api/user/stats"] });
-      
+
       toast({
         title: "Pesquisa criada com sucesso",
         description: "Sua análise de concorrência foi iniciada",
       });
-      
+
       // Redirect to the report page or dashboard
       setLocation(`/report/${research.id}`);
     },
@@ -150,18 +150,18 @@ export default function NewResearchPage() {
       });
     },
   });
-  
+
   function onSubmit(values: FormValues) {
     createResearchMutation.mutate(values);
   }
-  
+
   // Update competitors field disabled state based on autoFindCompetitors
   const autoFindCompetitors = form.watch("autoFindCompetitors");
-  
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      
+
       <main className="flex-grow py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -301,11 +301,11 @@ export default function NewResearchPage() {
                           </FormItem>
                         )}
                       />
-                      
+
                       {/* Localização */}
                       <div className="sm:col-span-6 bg-gray-50 p-4 rounded-lg border border-gray-200 mt-4">
                         <h4 className="text-md font-medium mb-2">Localização do Negócio</h4>
-                        
+
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                           <FormField
                             control={form.control}
@@ -335,7 +335,7 @@ export default function NewResearchPage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={form.control}
                             name="state"
@@ -364,7 +364,7 @@ export default function NewResearchPage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={form.control}
                             name="city"
@@ -381,8 +381,8 @@ export default function NewResearchPage() {
                                       <SelectValue placeholder="Selecione uma cidade" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent>
-                                    {availableCities.map((city) => (
+                                  <SelectContent className="max-h-[300px] overflow-y-auto">
+                                    {cities[form.watch("state")]?.map((city) => (
                                       <SelectItem key={city} value={city}>
                                         {city}
                                       </SelectItem>
@@ -394,7 +394,7 @@ export default function NewResearchPage() {
                             )}
                           />
                         </div>
-                        
+
                         {selectedCity && (
                           <div className="mt-4">
                             <SimpleMap 
@@ -525,11 +525,11 @@ export default function NewResearchPage() {
                           </FormItem>
                         )}
                       />
-                      
+
                       {/* Google Analytics e Google Trends */}
                       <div className="mt-8 space-y-4 border-t pt-6">
                         <h4 className="text-sm font-medium text-gray-700">Fontes de dados adicionais</h4>
-                        
+
                         <FormField
                           control={form.control}
                           name="includeGoogleAnalytics"
@@ -551,7 +551,7 @@ export default function NewResearchPage() {
                             </FormItem>
                           )}
                         />
-                        
+
                         <FormField
                           control={form.control}
                           name="includeGoogleTrends"
